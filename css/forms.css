@@ -1,0 +1,51 @@
+.forms-page main { padding-top: 130px; }
+.form-title { font-size: clamp(2rem, 5vw, 2.8rem); margin-bottom: .6em; }
+.paper { background: rgba(255, 255, 255, .6); border-radius: var(--radius); padding: clamp(1.4rem, 4vw, 3rem); box-shadow: var(--shadow); }
+.details { border: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.4rem; margin-bottom: 2.5rem; }
+.details legend { font-family: "Frank Ruhl Libre", serif; font-size: 1.4rem; color: var(--ink); margin-bottom: 1rem; }
+.details label { display: flex; flex-direction: column; gap: .35rem; font-size: .92rem; color: var(--muted); }
+.details .full { grid-column: 1 / -1; }
+.paper input[type=text], .paper input[type=tel], .paper input[type=date], .paper select {
+  font: inherit; color: var(--text); padding: .7em .9em; border: 1px solid var(--nude); border-radius: 10px; background: var(--white);
+}
+.paper input:focus, .paper select:focus { outline: 2px solid var(--accent-light); border-color: var(--accent); }
+.form-h { font-size: 1.5rem; margin: 2.2rem 0 1rem; }
+.form-h small { font-size: .95rem; color: var(--muted); font-family: "Heebo", sans-serif; }
+.q-group { border-top: 2px solid var(--ink); margin-bottom: 1.6rem; }
+.q-row { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem; padding: .7rem 0; border-bottom: 1px solid var(--nude); }
+.q-text { flex: 1 1 260px; }
+.yn input { position: absolute; opacity: 0; pointer-events: none; }
+.yn span {
+  display: inline-block; min-width: 58px; text-align: center; padding: .35em .9em; border-radius: 999px;
+  border: 1px solid var(--nude); cursor: pointer; transition: .2s; background: var(--white);
+}
+.yn input:checked + span { background: var(--accent); border-color: var(--accent); color: var(--white); }
+.yn input:focus-visible + span { outline: 2px solid var(--accent-light); outline-offset: 2px; }
+.q-row.missing .q-text { color: #a4412f; }
+.q-detail { flex: 1 1 100%; }
+.declaration { background: var(--blush); border-radius: 14px; padding: 1.4rem 1.6rem; margin-top: 1rem; }
+.declaration h3 { font-size: 1.2rem; }
+.declaration p { font-size: .95rem; margin-top: .5rem; }
+.consent { padding-right: 1.3rem; display: grid; gap: .8rem; }
+.consent li { padding-right: .3rem; }
+.agree { display: flex; gap: .6rem; align-items: center; margin-top: 1.2rem; font-weight: 500; cursor: pointer; }
+.agree input { width: 20px; height: 20px; accent-color: var(--accent); }
+.sign { margin-top: 2rem; display: grid; gap: .5rem; }
+.sign canvas { width: 100%; max-width: 600px; height: 160px; background: var(--white); border: 1px dashed var(--rose); border-radius: 12px; touch-action: none; }
+.link-btn { justify-self: start; background: none; border: 0; color: var(--accent); cursor: pointer; font: inherit; text-decoration: underline; }
+.form-error { color: #a4412f; margin-top: 1.4rem; font-weight: 500; }
+.form-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.8rem; }
+.form-actions .btn { border: 0; cursor: pointer; font: inherit; }
+.form-actions .btn-ghost { border: 1px solid var(--accent); }
+.note { font-size: .85rem; color: var(--muted); margin-top: 1rem; }
+@media (max-width: 600px) { .details { grid-template-columns: 1fr; } }
+
+@media print {
+  body { background: #fff; font-size: 12px; }
+  .site-header, .site-footer, .form-actions, .note, .link-btn, .section-head p:not(.eyebrow) { display: none !important; }
+  .forms-page main { padding: 0; }
+  .paper { box-shadow: none; padding: 0; background: none; }
+  .yn span { border-color: #999; }
+  .yn input:checked + span { background: #000 !important; color: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .q-row { padding: .25rem 0; break-inside: avoid; }
+}

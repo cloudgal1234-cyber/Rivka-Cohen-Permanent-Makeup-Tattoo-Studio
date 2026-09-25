@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>הצהרת בריאות וטופס הסכמה | רבקה כהן – איפור קבוע</title>
+  <meta name="description" content="הצהרת בריאות וטופס הסכמה לטיפול איפור קבוע – רבקה כהן, גבעת זאב.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Frank+Ruhl+Libre:wght@400;500;700&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/forms.css">
+</head>
+<body class="forms-page">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="רבקה כהן – לדף הבית">
+        <img src="assets/logo.png" alt="לוגו רבקה כהן" class="brand-logo" onerror="this.onerror=null;this.src='assets/logo.svg'">
+        <span class="brand-text">
+          <span class="brand-name">רבקה כהן</span>
+          <span class="brand-sub">permanent makeup</span>
+        </span>
+      </a>
+      <a href="index.html" class="btn btn-small btn-ghost">חזרה לאתר</a>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container narrow">
+      <header class="section-head">
+        <p class="eyebrow">לפני הטיפול</p>
+        <h1 class="form-title">הצהרת בריאות <span class="brush">וטופס הסכמה</span></h1>
+        <p>יש לענות על כל השאלות. התשובות נשארות אצלך במכשיר ונשלחות רק לרבקה, בוואטסאפ או בהדפסה, לפי בחירתך.</p>
+      </header>
+
+      <form id="health-form" class="paper" novalidate>
+        <fieldset class="details">
+          <legend>פרטים אישיים</legend>
+          <label>שם מלא<input type="text" name="name" required autocomplete="name"></label>
+          <label>מספר זהות<input type="text" name="id" inputmode="numeric" required></label>
+          <label>טלפון<input type="tel" name="phone" required autocomplete="tel" dir="ltr"></label>
+          <label>תאריך<input type="date" name="date" required></label>
+          <label class="full">הטיפול המבוקש
+            <select name="treatment" required>
+              <option value="">בחרי טיפול</option>
+              <option>גבות – מיקרובליידינג</option><option>גבות – פודרה / אומברה</option><option>גבות – קומבו</option>
+              <option>שפתיים</option><option>תוחם עיניים</option><option>חידוש / תיקון</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <h2 class="form-h">שאלון בריאות</h2>
+        <div class="q-group">
+          <div class="q-row">
+            <span class="q-text">האם הנך נמצאת תחת טיפול רפואי כלשהו?</span>
+            <label class="yn"><input type="radio" name="q1" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q1" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם הנך סובלת ממחלות סבוריאה / פסוריאזיס או מחלת עור כלשהי?</span>
+            <label class="yn"><input type="radio" name="q2" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q2" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם הנך סובלת מצלקות קלואידיות? (צלקת מורמת על פני העור)</span>
+            <label class="yn"><input type="radio" name="q3" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q3" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם הנך סובלת מהפטיטיס B/C / איידס?</span>
+            <label class="yn"><input type="radio" name="q4" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q4" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם הנך סובלת ממחלה / גירוי / הרפס באזור המיועד לטיפול?</span>
+            <label class="yn"><input type="radio" name="q5" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q5" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם הנך סובלת מריפוי איטי של פצעים או הצטלקות?</span>
+            <label class="yn"><input type="radio" name="q6" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q6" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם הנך תחת השפעת אלכוהול / סמים?</span>
+            <label class="yn"><input type="radio" name="q7" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q7" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם הנך סובלת ממחלת פרקים?</span>
+            <label class="yn"><input type="radio" name="q8" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q8" value="לא"><span>לא</span></label>
+          </div>
+        </div>
+        <div class="q-group">
+          <div class="q-row">
+            <span class="q-text">האם הנך סובלת ממחלות לחץ דם גבוה?</span>
+            <label class="yn"><input type="radio" name="q9" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q9" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם הנך סובלת ממחלת סוכרת / אי קרישת דם?</span>
+            <label class="yn"><input type="radio" name="q10" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q10" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם הנך מטופלת אונקולוגית / טיפולים כימותרפיים?</span>
+            <label class="yn"><input type="radio" name="q11" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q11" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם עברת / תעברי בזמן הקרוב ניתוחים בגוף?</span>
+            <label class="yn"><input type="radio" name="q12" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q12" value="לא"><span>לא</span></label>
+          </div>
+        </div>
+        <div class="q-group">
+          <div class="q-row">
+            <span class="q-text">האם את בהריון / מניקה?</span>
+            <label class="yn"><input type="radio" name="q13" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q13" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם הנך נוטלת רואקוטן או נטלת בעבר?</span>
+            <label class="yn"><input type="radio" name="q14" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q14" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם את כרגע שזופה / משתמשת באופן קבוע במכונת שיזוף?</span>
+            <label class="yn"><input type="radio" name="q15" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q15" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם את נוטלת תרופות כיום באופן קבוע?</span>
+            <label class="yn"><input type="radio" name="q16" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q16" value="לא"><span>לא</span></label>
+            <input type="text" class="q-detail" name="q16_detail" placeholder="אם כן – פרטי אילו תרופות" hidden>
+          </div>
+        </div>
+        <div class="q-group">
+          <div class="q-row">
+            <span class="q-text">האם נטלת כדור לפני הטיפול?</span>
+            <label class="yn"><input type="radio" name="q17" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q17" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם את רגישה לתרופות או לחומרים מסוימים?</span>
+            <label class="yn"><input type="radio" name="q18" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q18" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם הנך רגישה לחומרי הרדמה / מאלחשים?</span>
+            <label class="yn"><input type="radio" name="q19" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q19" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם קיימות בעיות הורמונליות / אנדוקריניות?</span>
+            <label class="yn"><input type="radio" name="q20" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q20" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם יש לך חוסר איזון בבלוטת התריס?</span>
+            <label class="yn"><input type="radio" name="q21" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q21" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם יש לך חוסר באנזים G6PD / רגישות לפול?</span>
+            <label class="yn"><input type="radio" name="q22" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q22" value="לא"><span>לא</span></label>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם את סובלת מבעיה אחרת שלא הוזכרה בשאלון?</span>
+            <label class="yn"><input type="radio" name="q23" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q23" value="לא"><span>לא</span></label>
+            <input type="text" class="q-detail" name="q23_detail" placeholder="אם כן – פרטי אילו תרופות" hidden>
+          </div>
+          <div class="q-row">
+            <span class="q-text">האם הנך מתחת לגיל 18?</span>
+            <label class="yn"><input type="radio" name="q24" value="כן" required><span>כן</span></label>
+            <label class="yn"><input type="radio" name="q24" value="לא"><span>לא</span></label>
+          </div>
+        </div>
+
+        <div class="declaration">
+          <h3>הצהרת המטופלת</h3>
+          <p>הנני מצהירה כי הפרטים שמסרתי נכונים ומלאים וכי לא העלמתי כל מידע רפואי.</p>
+          <p>אני החתומה מטה מצהירה בזאת כי הפרטים שמסרתי נכונים להיום ומציגים באור מלא את הרקע הרפואי שלי. מצבי הפיזי טוב ואינני סובלת מבעיות רפואיות העלולות להשפיע עליי לרעה במהלך הטיפול.</p>
+          <p>ידוע לי כי העלמת מידע והצהרה לא נכונה אסורים ועלולים לגרום לי נזק רפואי.</p>
+          <label class="agree"><input type="checkbox" name="declare" required> אני מאשרת את הצהרת הבריאות</label>
+        </div>
+
+        <h2 class="form-h">טופס הסכמה לטיפול <small>לקעקוע מאיפור קבוע</small></h2>
+        <ol class="consent">
+          <li>אני מבין/ה כי תהליך האיפור הקבוע כרוך בהחדרת פיגמנט לשכבת העור בדרמיס באמצעות מחט, וכי תהליך זה נחשב לפעולה פולשנית במידה מסוימת.</li>
+          <li>הוסבר לי כי תיתכן תחושת כאב, אי נוחות, נפיחות, אדמומיות ולעיתים תגובות עור קלות.</li>
+          <li>ידוע לי כי התוצאה הסופית תיראה רק לאחר מספר שבועות, ולעיתים נדרשים טיפולים חוזרים או תיקונים.</li>
+          <li>אני מודע/ת לכך כי הפיגמנט עשוי לדהות עם הזמן, בהתאם לסוג העור, חשיפה לשמש, טיפולים נוספים, או השפעות הורמונליות.</li>
+          <li>הוסבר לי כי תיתכנה תגובות אלרגיות לפיגמנט או לחומרים שבהם נעשה שימוש, למרות שהן נדירות.</li>
+          <li>אני מתחייב/ת להודיע למטפל/ת אם יש לי היסטוריה של תגובות אלרגיות, מחלות עור, או כל מצב רפואי שעלול להשפיע על הטיפול.</li>
+          <li>אני מבין/ה כי התוצאה הסופית תלויה בגורמים אישיים כגון סוג העור, הרגלים, וטיפול לאחרי הפרוצדורה. אין לי תביעה או טענה עתידית בגין תוצאה שלא תואמת את ציפיותיי, כל עוד העבודה בוצעה בהתאם לנהלים המקובלים.</li>
+        </ol>
+        <label class="agree"><input type="checkbox" name="consent" required> קראתי, הבנתי ואני מסכימה לכל הסעיפים</label>
+
+        <div class="sign">
+          <span>חתימה</span>
+          <canvas id="sig" width="600" height="160" aria-label="אזור חתימה"></canvas>
+          <button type="button" class="link-btn" id="sig-clear">ניקוי חתימה</button>
+        </div>
+
+        <p class="form-error" id="form-error" role="alert" hidden>נא למלא את כל הפרטים, לענות על כל השאלות ולאשר את ההצהרה וההסכמה.</p>
+
+        <div class="form-actions">
+          <button type="submit" class="btn">שליחה לרבקה בוואטסאפ</button>
+          <button type="button" class="btn btn-ghost" id="print-btn">הדפסה / שמירה כ-PDF</button>
+        </div>
+        <p class="note">בשליחה בוואטסאפ נפתחת הודעה מוכנה עם התשובות. את החתימה עצמה יש לצרף בהדפסה או בפגישה.</p>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <img src="assets/logo.png" alt="לוגו רבקה כהן" class="footer-logo" onerror="this.onerror=null;this.src='assets/logo.svg'">
+      <p>רבקה כהן · איפור קבוע · ברקת 36, גבעת זאב · <a href="tel:+972559202184" dir="ltr">055-920-2184</a> · <a href="https://www.instagram.com/rivka_cohen_" target="_blank" rel="noopener" dir="ltr">@rivka_cohen_</a></p>
+    </div>
+  </footer>
+  <script src="js/forms.js"></script>
+</body>
+</html>
