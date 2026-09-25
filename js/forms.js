@@ -42,9 +42,9 @@ function validate() {
 function summary() {
   const f = form.elements;
   const lines = [
-    'הצהרת בריאות וטופס הסכמה – רבקה כהן איפור קבוע',
+    'הצהרת בריאות וטופס הסכמה – רבקה כהן, קעקועים בחומר של איפור קבוע',
     `שם: ${f.name.value}`, `ת.ז.: ${f.id.value}`, `טלפון: ${f.phone.value}`,
-    `תאריך: ${f.date.value}`, `טיפול: ${f.treatment.value}`, '', 'שאלון בריאות:'
+    `תאריך: ${f.date.value}`, `קעקוע: ${f.treatment.value}`, '', 'שאלון בריאות:'
   ];
   const yes = [];
   form.querySelectorAll('.q-row').forEach((row, i) => {
