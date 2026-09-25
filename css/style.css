@@ -331,3 +331,12 @@ p + p { margin-top: 1em; }
 .main-nav a, .brand-sub { white-space: nowrap; }
 .main-nav { gap: 1.3rem; }
 @media (max-width: 520px) { .brand-sub { font-size: .55rem; letter-spacing: .1em; } }
+
+/* ===== גלריית תמונות ===== */
+.gallery-grid { grid-template-columns: repeat(3, 1fr); }
+.g-item:nth-child(even), .g-item.reveal.visible:nth-child(even) { transform: none; }
+.g-item:nth-child(3n+2), .g-item.reveal.visible:nth-child(3n+2) { transform: translateY(2rem); }
+.g-art img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.photo-credit { text-align: center; font-size: .8rem; color: var(--muted); margin-top: 3rem; }
+.photo-credit a { text-decoration: underline; }
+@media (max-width: 980px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } .g-item:nth-child(3n+2), .g-item.reveal.visible:nth-child(3n+2) { transform: none; } }
