@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Rivka Cohen">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d9b77e"/><stop offset=".5" stop-color="#b8894d"/><stop offset="1" stop-color="#e6c992"/></linearGradient></defs>
+  <circle cx="60" cy="60" r="56" fill="none" stroke="url(#g)" stroke-width="2"/>
+  <circle cx="60" cy="60" r="50" fill="none" stroke="url(#g)" stroke-width=".7"/>
+  <text x="60" y="72" text-anchor="middle" font-family="Georgia,serif" font-size="38" font-style="italic" fill="url(#g)">RC</text>
+  <path d="M34 42c10-8 22-10 30-7" fill="none" stroke="url(#g)" stroke-width="1.6" stroke-linecap="round"/>
+  <path d="M56 42c10-8 22-8 30-3" fill="none" stroke="url(#g)" stroke-width="1.6" stroke-linecap="round" transform="translate(0 0)"/>
+</svg>
