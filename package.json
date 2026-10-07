@@ -1,0 +1,12 @@
+{
+  "name": "rivka-cohen-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "אתר ומערכת תורים – רבקה כהן, קעקועים בחומר של איפור קבוע",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --no-warnings server.js",
+    "test": "node --no-warnings --test test/*.test.js"
+  },
+  "engines": { "node": ">=22.13" }
+}
