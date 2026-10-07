@@ -19,21 +19,22 @@
   }
 
   function login() {
-    const pw = h('input', { type: 'password', class: 'inp', autocomplete: 'current-password', placeholder: 'סיסמה', required: true });
+    const user = h('input', { type: 'text', class: 'inp', autocomplete: 'username', placeholder: 'שם משתמש', required: true, dir: 'ltr', style: 'margin-bottom:.7rem' });
+    const pw = h('input', { type: 'password', class: 'inp', autocomplete: 'current-password', placeholder: 'סיסמה', required: true, dir: 'ltr' });
     const err = h('div', { class: 'alert hidden', role: 'alert' });
     root.replaceChildren(h('div', { class: 'container' }, h('form', {
       class: 'panel login-box',
       onsubmit: async e => {
         e.preventDefault();
-        try { await api('/api/admin/login', { method: 'POST', body: { password: pw.value } }); shell(); }
+        try { await api('/api/admin/login', { method: 'POST', body: { username: user.value, password: pw.value } }); shell(); }
         catch (ex) { err.textContent = ex.message; err.classList.remove('hidden'); pw.select(); }
       }
     },
       h('img', { src: 'assets/logo.png', alt: 'רבקה כהן' }),
       h('h1', { style: 'font-size:1.6rem;margin-bottom:1.2rem' }, 'כניסה לניהול'),
-      pw, err,
+      user, pw, err,
       h('button', { type: 'submit', class: 'btn', style: 'width:100%;justify-content:center;margin-top:1rem' }, 'כניסה'))));
-    pw.focus();
+    user.focus();
   }
 
   // ---------- מסגרת ----------
@@ -213,7 +214,7 @@
     const save = async (force) => {
       try {
         await api('/api/admin/appointments', { method: 'POST', body: {
-          name: name.value, phone: phone.value, serviceId: +svc.value, date: date.value, time: tp.value,
+          name: name.value, phone: phone.value, serviceId: svc.value, date: date.value, time: tp.value,
           duration: +dur.value, status: status.value, adminNote: note.value, force
         } });
         m.close(); toast('התור נוסף'); reload();

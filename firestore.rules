@@ -1,0 +1,103 @@
+rules_version = '2';
+
+// כללי האבטחה של מערכת התורים – רבקה כהן.
+// לקוחות: יכולות רק *ליצור* תור / הצהרת בריאות / רישום לרשימת המתנה, ולראות אילו שעות תפוסות (בלי שמות).
+// רבקה (המשתמשת המנהלת): רואה ומנהלת הכול.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ⚠️ המייל חייב להיות זהה למשתמש שנוצר ב-Firebase Authentication (שם משתמש rivka)
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email == 'rivka@rivka-cohen.studio';
+    }
+
+    function text(v, min, max) { return v is string && v.size() >= min && v.size() <= max; }
+    function phoneOk(p) { return p is string && p.matches('^0[0-9]{8,9}$'); }
+    function dateOk(d) { return d is string && d.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$'); }
+    function timeOk(t) { return t is string && t.matches('^([01][0-9]|2[0-3]):[0-5][0-9]$'); }
+    function autoConfirm() {
+      return exists(/databases/$(database)/documents/config/public) && get(/databases/$(database)/documents/config/public).data.get('autoConfirm', false) == true;
+    }
+
+    // הגדרות: שעות פתיחה, סוגי טיפולים – ציבורי לקריאה
+    match /config/public {
+      allow get: if true;
+      allow write: if isAdmin();
+    }
+
+    // משבצות תפוסות ביומן (בלי פרטים אישיים)
+    match /blocks/{id} {
+      allow read: if true;
+      allow create: if isAdmin() || (
+        request.resource.data.keys().hasOnly(['date', 'time', 'appt'])
+        && dateOk(request.resource.data.date) && timeOk(request.resource.data.time)
+        && id == request.resource.data.date + '_' + request.resource.data.time.replace(':', '')
+        && getAfter(/databases/$(database)/documents/appointments/$(request.resource.data.appt)).data.date == request.resource.data.date
+      );
+      allow update, delete: if isAdmin();
+    }
+
+    match /appointments/{id} {
+      allow read, update, delete: if isAdmin();
+      allow create: if isAdmin() || validOnlineBooking(request.resource.data, id);
+    }
+    function validOnlineBooking(d, id) {
+      return d.keys().hasOnly(['name', 'phone', 'serviceId', 'serviceName', 'date', 'time', 'duration', 'status',
+                               'clientNote', 'source', 'firstBlock', 'healthFormId', 'createdAt', 'updatedAt'])
+        && text(d.name, 2, 80) && phoneOk(d.phone) && text(d.serviceId, 1, 40) && text(d.serviceName, 1, 80)
+        && dateOk(d.date) && timeOk(d.time) && d.duration is int && d.duration > 0 && d.duration <= 600
+        && d.status == (autoConfirm() ? 'confirmed' : 'pending')
+        && d.source == 'online' && text(d.clientNote, 0, 500)
+        && d.createdAt == request.time && d.updatedAt == request.time
+        && d.firstBlock is string && d.firstBlock.matches('^' + d.date + '_[0-9]{4}$')
+        && existsAfter(/databases/$(database)/documents/blocks/$(d.firstBlock))
+        && getAfter(/databases/$(database)/documents/blocks/$(d.firstBlock)).data.appt == id
+        && (d.healthFormId == null || existsAfter(/databases/$(database)/documents/healthForms/$(d.healthFormId)));
+    }
+
+    // הצהרות בריאות – מידע רפואי: רק רבקה קוראת
+    match /healthForms/{id} {
+      allow read, delete: if isAdmin();
+      allow create: if validHealth(request.resource.data);
+    }
+    function validHealth(d) {
+      return d.keys().hasOnly(['name', 'phone', 'idNumber', 'answers', 'details', 'declare', 'consent', 'signedAt'])
+        && text(d.name, 2, 80) && phoneOk(d.phone) && d.idNumber is string && d.idNumber.matches('^[0-9]{5,9}$')
+        && d.answers is list && d.answers.size() == 24 && d.details is map && d.details.size() <= 24
+        && d.declare == true && d.consent == true && d.signedAt == request.time;
+    }
+    match /healthSignatures/{id} {
+      allow read, delete: if isAdmin();
+      allow create: if request.resource.data.keys().hasOnly(['image', 'signedAt'])
+        && request.resource.data.image is string && request.resource.data.image.size() < 400000
+        && request.resource.data.image.matches('^data:image/png;base64,[A-Za-z0-9+/=]+$')
+        && request.resource.data.signedAt == request.time
+        && existsAfter(/databases/$(database)/documents/healthForms/$(id));
+    }
+    // האם ללקוחה יש הצהרה בתוקף (לפי גיבוב של הטלפון – בלי פרטים)
+    match /healthStatus/{hash} {
+      allow get: if true;
+      allow create, update: if isAdmin() || (
+        request.resource.data.keys().hasOnly(['form', 'signedAt'])
+        && request.resource.data.signedAt == request.time
+        && getAfter(/databases/$(database)/documents/healthForms/$(request.resource.data.form)).data.signedAt == request.time
+      );
+      allow delete: if isAdmin();
+    }
+
+    match /waitlist/{id} {
+      allow read, update, delete: if isAdmin();
+      allow create: if request.resource.data.keys().hasOnly(['name', 'phone', 'serviceId', 'dateFrom', 'dateTo', 'timePref', 'note', 'status', 'createdAt'])
+        && text(request.resource.data.name, 2, 80) && phoneOk(request.resource.data.phone)
+        && request.resource.data.status == 'waiting' && request.resource.data.createdAt == request.time
+        && request.resource.data.timePref in ['any', 'morning', 'noon', 'evening']
+        && text(request.resource.data.note, 0, 500)
+        && (request.resource.data.dateFrom == null || dateOk(request.resource.data.dateFrom))
+        && (request.resource.data.dateTo == null || dateOk(request.resource.data.dateTo));
+    }
+
+    match /clientNotes/{phone} {
+      allow read, write: if isAdmin();
+    }
+  }
+}

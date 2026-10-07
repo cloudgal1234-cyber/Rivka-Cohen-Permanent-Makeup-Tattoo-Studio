@@ -14,20 +14,16 @@ const UI = (() => {
     return el;
   }
 
+  // שכבת הנתונים (js/backend.js – Firebase) נטענת כמודול ומודיעה כשהיא מוכנה
+  const backend = new Promise((resolve, reject) => {
+    window.__backendReady = resolve;
+    setTimeout(() => reject(Object.assign(new Error('מערכת התורים לא נטענה. רענני את הדף ונסי שוב.'), { status: 0 })), 20000);
+  });
+  backend.catch(() => {});
   async function api(path, { method = 'GET', body } = {}) {
-    let res;
-    try {
-      res = await fetch(path, {
-        method, credentials: 'same-origin',
-        headers: body ? { 'Content-Type': 'application/json' } : {},
-        body: body ? JSON.stringify(body) : undefined
-      });
-    } catch {
-      throw Object.assign(new Error('אין חיבור לשרת. בדקי את האינטרנט ונסי שוב.'), { status: 0 });
-    }
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok) throw Object.assign(new Error(data.error || 'משהו השתבש, נסי שוב'), { status: res.status });
-    return data;
+    const b = await backend;
+    try { return await b.request(method, path, body); }
+    catch (e) { throw Object.assign(new Error(e.message || 'משהו השתבש, נסי שוב'), { status: e.status ?? 500 }); }
   }
 
   let toastTimer;
