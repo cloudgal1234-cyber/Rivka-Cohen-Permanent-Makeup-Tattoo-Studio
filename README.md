@@ -31,7 +31,7 @@
    - **Users → Add user**: מייל `rivka@rivka-cohen.studio`, וסיסמה חזקה שבוחרים (זו הסיסמה של רבקה – לא לשמור אותה בקוד!).
    - **Settings → User actions**: מבטלים את **Enable create (sign-up)** כדי שאף אחד לא יוכל לפתוח משתמש.
 5. **Project settings** (גלגל השיניים) ← **Your apps** ← סמל `</>` ← רושמים אפליקציה ← מעתיקים את `apiKey`, `authDomain`, `projectId`, `appId` לקובץ `js/firebase-config.js`.
-6. האתר מתארח ב-**Netlify** (חינם) בכתובת https://rivka-cohen.netlify.app – ההגדרות ב-`netlify.toml`. כל שינוי במאגר ב-GitHub עולה לאתר אוטומטית. אם משנים את הכתובת, צריך לעדכן אותה גם ב-`robots.txt`, `sitemap.xml` ובתגיות `canonical` ב-`index.html` וב-`book.html`.
+6. האתר מתארח ב-**Netlify** (חינם) בכתובת https://rivka-stodio.netlify.app – ההגדרות ב-`netlify.toml`. כל שינוי במאגר ב-GitHub עולה לאתר אוטומטית. אם משנים את הכתובת, צריך לעדכן אותה גם ב-`robots.txt`, `sitemap.xml` ובתגיות `canonical` ב-`index.html` וב-`book.html`.
 
 **כניסה לניהול:** `/admin.html` · שם משתמש: `rivka` · הסיסמה שהוגדרה בשלב 4 (אפשר להחליף מתוך דף הניהול).
 

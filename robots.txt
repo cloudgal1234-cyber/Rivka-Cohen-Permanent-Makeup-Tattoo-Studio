@@ -3,4 +3,4 @@ Disallow: /admin
 Disallow: /admin.html
 Disallow: /test/
 
-Sitemap: https://rivka-cohen.netlify.app/sitemap.xml
+Sitemap: https://rivka-stodio.netlify.app/sitemap.xml
